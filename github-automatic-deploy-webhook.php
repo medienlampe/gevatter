@@ -18,6 +18,9 @@
    * VERSIONFILE has to be some file containing the VERSIONSTRING relative to
    * your repository tree.
    * VERSIONHASH will be searched and replaced with your latest commit hash.
+   *
+   * VERSIONFILE can also be a list of files to be processed:
+   * define('VERSIONFILE', ['path/to/file.ext', 'path/to/anotherFile.ext']);
    */
   define('VERSIONFILE', 'path/to/file.ext');
   define('VERSIONSTRING', '##VersionHash##');
@@ -113,7 +116,13 @@
    * the defined VERSIONFILE via using sed.
    */
   if (INCLUDEVERSION) {
-    $aCustomCommands[] = 'cd tmp && version="$(git rev-parse HEAD)" && sed -i "s/' . VERSIONSTRING . '/$version/g" "' . VERSIONFILE . '"';
+    if (!is_array(VERSIONFILE)) {
+      $aCustomCommands[] = 'cd tmp && version="$(git rev-parse HEAD)" && sed -i "s/' . VERSIONSTRING . '/$version/g" "' . VERSIONFILE . '"';
+    } else {
+      foreach (VERSIONFILE as $key => $versionfile) {
+        $aCustomCommands[] = 'cd tmp && version="$(git rev-parse HEAD)" && sed -i "s/' . VERSIONSTRING . '/$version/g" "' . $versionfile . '"';
+      }
+    }
   };
 
   /**
