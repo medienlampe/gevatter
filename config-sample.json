@@ -1,0 +1,25 @@
+{
+  "debugMode": false,
+  "deployments": {
+    "someuser/sampleProject": {
+      "name": "Sample Deployment",
+      "secret": "ThisHasToBeChanged",
+      "source": "dist/",
+      "target": "/absolute/path/to/web/directory",
+      "includeVersion": true,
+      "versionFile": ["path/to/file.ext", "path/to/anotherfile.ext"],
+      "versionString": "##VersionHash##",
+      "customCommands": ["echo Hello", "echo World"]
+    },
+    "maybeanotheruser/someOtherProject": {
+      "name": "Some Other Deployment",
+      "secret": "ThisHasToBeChanged",
+      "source": "",
+      "target": "/absolute/path/to/web/directory",
+      "includeVersion": false,
+      "versionFile": [],
+      "versionString": "",
+      "customCommands": []
+    }
+  }
+}
