@@ -1,4 +1,4 @@
-# GitHub Webhook Endpoint for automatic Deployment
+# Gevatter - GitHub Webhook Endpoint For Automatic Deployment
 
 This is a fast and crudely put together script to refresh the code of my demos when a push to the corresponding repository has been made.
 
