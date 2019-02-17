@@ -1,5 +1,4 @@
 <?php
-  ini_set("display_errors", true);
   /**
    * Workaround for getallheaders() not present in PHP-FPM
    * @see https://stackoverflow.com/a/41427998 
